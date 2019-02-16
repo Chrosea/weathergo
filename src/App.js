@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Dashboard from "./pages";
+import Dashboard from "./Weather";
 import "./App.css";
 import "./index.css";
 //import PropTypes from "prop-types";
