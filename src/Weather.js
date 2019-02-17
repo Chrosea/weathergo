@@ -97,7 +97,7 @@ class Dashboard extends React.Component {
         </Grid>
 
         <Grid container justify="center" alignItems="center">
-          <Grid item xs={5}>
+          <Grid item xs={10} sm={5}>
             <Paper style={paperStyle.Paper}>
               <Typography
                 variant="h3"
@@ -112,7 +112,7 @@ class Dashboard extends React.Component {
               </div>
             </Paper>
           </Grid>
-          <Grid item xs={5} alignContent="center">
+          <Grid item xs={10} sm={5} alignContent="center">
             <Paper style={paperStyle.Paper}>
               <Typography
                 variant="h3"

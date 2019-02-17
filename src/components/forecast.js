@@ -12,7 +12,7 @@ class Forecast extends Component {
      * @param {*} daily
      */
     const days = daily.map(forecast => (
-      <Grid item xs={2} key={forecast.date_epoch}>
+      <Grid item sm={2} xs={5} key={forecast.date_epoch}>
         <Paper
           style={{
             margin: 10,
