@@ -11,8 +11,8 @@ import axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import "typeface-roboto";
 
-import Forecast from "./components/forcast";
-import { lightBlue } from "@material-ui/core/colors";
+import Forecast from "./components/forecast";
+//import { lightBlue } from "@material-ui/core/colors";
 
 const DEFAULT_CITY = "Beijing";
 const MODE = "forecast";
@@ -34,17 +34,27 @@ class Dashboard extends React.Component {
     await this.getUrl(MODE, DEFAULT_CITY);
   }
 
-  getUrl = async (MODE, value) => {
+  /**
+   * Get weather data using api key from apixu.com
+   * using given dataMode and city
+   * @param {*} dataMode can be current and forecast
+   * @param {*} city
+   */
+  getUrl = async (MODE, city) => {
     const url =
       "http://api.apixu.com/v1/" +
       MODE +
       ".json?key=bd0ce85646804bf2ac494702192301&q=" +
-      value +
+      city +
       "&days=5";
     const { data } = await axios.get(url);
     await this.setState({ data });
   };
 
+  /**
+   * Handle change of selected city
+   * @param {*} event selector change
+   */
   handleChange = async event => {
     await this.setState({ city: event.target.value });
     await this.getUrl(MODE, event.target.value);
@@ -59,7 +69,7 @@ class Dashboard extends React.Component {
     const forecastList = data.forecast;
 
     return (
-      <Container>
+      <Container style={{ minWidth: 450 }}>
         <Grid container justify="center" alignItems="center">
           <Grid item xs={10}>
             <Paper style={{ margin: 10, padding: 10 }}>
@@ -102,14 +112,15 @@ class Dashboard extends React.Component {
               </div>
             </Paper>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={5} alignContent="center">
             <Paper style={paperStyle.Paper}>
               <Typography
                 variant="h3"
                 gutterBottom
                 style={{ textAlign: "center" }}
               >
-                {data.location.name}, {data.location.country}
+                {data.location.name}
+                {/* , {data.location.country} */}
               </Typography>
             </Paper>
           </Grid>
@@ -127,6 +138,4 @@ class Dashboard extends React.Component {
 
 export default Dashboard;
 
-const Container = styled.div`
-  minwidth: 450;
-`;
+const Container = styled.div``;
